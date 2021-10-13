@@ -13,7 +13,7 @@
             android:name=".MainMenu"
             android:exported="true" />
         <activity
-            android:name=".MainActivity"
+            android:name=".WelcomeActivity"
             android:exported="true"
             android:screenOrientation="landscape" >
             <intent-filter>
