@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="cmpt276.assignment3.diamondseeker" >
+    package="cmpt276.assignment3.diamondseeker">
 
     <application
         android:allowBackup="true"
@@ -8,14 +8,27 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.DiamondSeeker" >
+        android:theme="@style/Theme.DiamondSeeker">
+        <activity
+            android:name=".PlayGame"
+            android:exported="true" />
+        <activity
+            android:name=".OptionsPage"
+            android:exported="true" />
+        <activity
+            android:name=".HelpPage"
+            android:exported="true" />
         <activity
             android:name=".MainMenu"
-            android:exported="true" />
+            android:exported="true"
+            android:label="Main Menu"
+            android:screenOrientation="landscape"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".WelcomeActivity"
             android:exported="true"
-            android:screenOrientation="landscape" >
+            android:label="Diamond Seeker"
+            android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
