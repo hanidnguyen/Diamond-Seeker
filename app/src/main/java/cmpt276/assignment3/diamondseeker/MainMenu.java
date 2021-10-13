@@ -10,7 +10,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import cmpt276.assignment3.diamondseeker.model.GameOptions;
+
 public class MainMenu extends AppCompatActivity {
+    private GameOptions options = new GameOptions();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
