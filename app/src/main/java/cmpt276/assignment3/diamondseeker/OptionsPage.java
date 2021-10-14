@@ -47,10 +47,7 @@ public class OptionsPage extends AppCompatActivity {
             RadioButton button = new RadioButton(this);
             button.setText(optionsDisplay[i]);
 
-            //TODO: Set on-click callbacks
-            button.setOnClickListener(view -> {
-                board_option = numPanel;
-            });
+            button.setOnClickListener(view -> board_option = numPanel);
 
             //Add to radio group:
             group.addView(button);

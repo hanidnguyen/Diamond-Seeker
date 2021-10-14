@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">DiamondSeeker</string>
+    <string name="question_mark_image_ref"><a 
+        href="https://www.pexels.com/photo/question-mark-on-chalk-board-356079/">
+        Tap to link</a></string>
+    <string name="onActivity_ref"><a
+        href="https://stackoverflow.com/questions/62671106/onactivityresult-method-is-deprecated-what-is-the-alternative">
+        Tap to link</a></string>
+
 </resources>
