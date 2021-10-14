@@ -4,16 +4,21 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 
 public class OptionsPage extends AppCompatActivity {
-    private int board_option, mines_option;
+    private static final String BOARD_NUM_NAME = "Board Number";
+    private static final String PREFS_NAME = "AppPrefs";
+
+    public static Intent makeIntent(Context context){
+        return new Intent(context,OptionsPage.class);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,46 +29,56 @@ public class OptionsPage extends AppCompatActivity {
         assert ab != null;
         ab.setDisplayHomeAsUpEnabled(true);
 
-        get_from_MainMenu();
         createBoardSizeRadioButtons();
-    }
-
-    private void get_from_MainMenu() {
-        Intent intent = getIntent();
-        board_option = intent.getIntExtra("BOARD_OPTION",1);
-        mines_option = intent.getIntExtra("MINES_OPTION",1);
-
     }
 
     private void createBoardSizeRadioButtons() {
         RadioGroup group = findViewById(R.id.board_size_radio);
 
         int[] numPanels = getResources().getIntArray(R.array.num_board_size);
-        String[] optionsDisplay = getResources().getStringArray(R.array.board_options_display);
+        String[] board_optionsDisplay = getResources().getStringArray(R.array.board_options_display);
         //create the buttons
         for(int i = 0; i < numPanels.length; i++){
             final int numPanel = numPanels[i];
 
             RadioButton button = new RadioButton(this);
-            button.setText(optionsDisplay[i]);
+            button.setText(board_optionsDisplay[i]);
 
-            button.setOnClickListener(view -> board_option = numPanel);
+            button.setOnClickListener(view -> 
+                    {
+                        saveBoardOption(numPanel);
+                    }
+                );
 
             //Add to radio group:
             group.addView(button);
+
+            //Select default button:
+            if(numPanel == getNumPanels(this)){
+                button.setChecked(true);
+            }
         }
 
     }
 
+    private void saveBoardOption(int numPanel) {
+        SharedPreferences prefs = this.getSharedPreferences(PREFS_NAME,MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putInt(BOARD_NUM_NAME,numPanel);
+        editor.apply();
+    }
+
+    static public int getNumPanels(Context context){
+        SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME,MODE_PRIVATE);
+
+        int default_board_size = context.getResources().getInteger(R.integer.default_board_size);
+
+        return prefs.getInt(BOARD_NUM_NAME,default_board_size);
+    }
 
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        Intent intent = new Intent();
-        intent.putExtra("BOARD_OPTION",board_option);
-        intent.putExtra("MINES_OPTION",mines_option);
-
-        setResult(RESULT_OK,intent);
 
         finish();
         return super.onOptionsItemSelected(item);
