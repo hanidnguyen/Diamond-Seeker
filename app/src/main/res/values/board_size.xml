@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer-array name="num_board_size">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </integer-array>
+    <string-array name="board_options_display">
+        <item>4 rows x 6 columns</item>
+        <item>5 rows x 10 columns</item>
+        <item>6 rows x 15 columns</item>
+    </string-array>
+</resources>
