@@ -44,7 +44,7 @@ public class MainMenu extends AppCompatActivity {
         Button play_btn = findViewById(R.id.play_game);
         play_btn.setOnClickListener(view -> {
             Intent intent = new Intent(MainMenu.this,PlayGame.class);
-
+            startActivity(intent);
         });
     }
 
@@ -53,8 +53,6 @@ public class MainMenu extends AppCompatActivity {
         Button option_btn = findViewById(R.id.options);
         option_btn.setOnClickListener(view -> {
             Intent intent = new Intent(MainMenu.this,OptionsPage.class);
-            intent.putExtra("BOARD_OPTION",options.getBoard_option());
-            intent.putExtra("MINES_OPTION",options.getMines_option());
             startActivity(intent);
         });
     }

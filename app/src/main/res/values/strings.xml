@@ -9,5 +9,7 @@
     <string name="number_mines_subtitle">Select number mines</string>
     <string name="board_size_subtitle">Select Board Size</string>
     <string name="options_background_description">Options background</string>
+    <string name="game_background_description">Game Background</string>
+    <string name="main_menu_background_description">Main Menu Background</string>
 
 </resources>
