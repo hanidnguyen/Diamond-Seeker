@@ -17,6 +17,14 @@ import android.widget.TableRow;
 import android.widget.Toast;
 
 import java.util.Random;
+/*
+    Game class for the Play game activity:
+    -   Has six fields: the number of rows/cols/diamonds
+                        grid of buttons/diamonds location/scanned buttons
+    Game play:
+    -   When button is clicked - shows number of diamonds in corresponding row/col
+                - if found diamond: update all scanned buttons
+ */
 
 public class PlayGame extends AppCompatActivity {
 
@@ -25,6 +33,7 @@ public class PlayGame extends AppCompatActivity {
     private int diamonds = 5;
     Button[][] buttons = new Button[NUM_ROWS][NUM_COLS];
     Boolean[][] diamonds_location = new Boolean[NUM_ROWS][NUM_COLS];
+    Boolean[][] buttons_scanned = new Boolean[NUM_ROWS][NUM_COLS];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,20 +43,23 @@ public class PlayGame extends AppCompatActivity {
 
         if (diamonds > (NUM_ROWS * NUM_COLS)) throw new AssertionError();
 
-        setupMinesArray();
-        populateMines();
+        setupBooleanArrays();
+        populateDiamonds();
         populateTableOfButtons();
     }
 
-    private void setupMinesArray() {
+    //setting up the initialized boolean arrays
+    private void setupBooleanArrays() {
         for(int row = 0; row < NUM_ROWS; row++){
             for(int col = 0; col < NUM_COLS; col++){
                 diamonds_location[row][col] = false;
+                buttons_scanned[row][col] = false;
             }
         }
     }
 
-    private void populateMines() {
+    //random diamond generator correspond to number of diamonds
+    private void populateDiamonds() {
         Random random = new Random();
 
         while(diamonds != 0){
@@ -68,10 +80,11 @@ public class PlayGame extends AppCompatActivity {
 
     }
 
-
+    //Create table of buttons
     private void populateTableOfButtons() {
         TableLayout table = findViewById(R.id.tableForButtons);
 
+        //Create new rows
         for(int row = 0; row < NUM_ROWS;row++){
             TableRow tableRow = new TableRow(this);
             tableRow.setLayoutParams(new TableLayout.LayoutParams(
@@ -81,6 +94,7 @@ public class PlayGame extends AppCompatActivity {
             ));
             table.addView(tableRow);
 
+            //Create a button according to number of columns for every row
             for(int col = 0; col < NUM_COLS;col++){
                 final int FINAL_COL = col;
                 final int FINAL_ROW = row;
@@ -92,11 +106,19 @@ public class PlayGame extends AppCompatActivity {
 
                 //Make text not clip on small buttons
                 button.setPadding(0,0,0,0);
+
+                /*OnclickListener:
+                 -  record scanned button
+                 -  show diamond if found
+                 -  refresh grid for every click
+                 */
                 button.setOnClickListener(view -> {
-                    button.setText(FINAL_ROW + "," + FINAL_COL);
+                    buttons_scanned[FINAL_ROW][FINAL_COL] = true;
                     if(diamonds_location[FINAL_ROW][FINAL_COL]) {
-                        gridButtonClicked(FINAL_ROW, FINAL_COL);
+                        showDiamond(FINAL_ROW, FINAL_COL);
+
                     }
+                    refreshGrid();
                 });
                 tableRow.addView(button);
                 buttons[row][col] = button;
@@ -104,7 +126,45 @@ public class PlayGame extends AppCompatActivity {
         }
     }
 
-    private void gridButtonClicked(int row, int col) {
+    //Re-setText to buttons to update number of diamonds at corresponding row/col
+    private void refreshGrid() {
+        for(int row = 0; row < NUM_ROWS; row++){
+            for(int col = 0; col < NUM_COLS; col++){
+                if(buttons_scanned[row][col]){
+                    int diamonds_number = displayNumberOfDiamonds(row,col);
+                    Button button = buttons[row][col];
+                    button.setText(""+diamonds_number);
+                }
+            }
+        }
+    }
+
+    //ROW and COL are given location of button to be scanned
+    //Scan the corresponding row and column for diamonds, then
+    //return number of diamonds.
+    private int displayNumberOfDiamonds(int ROW, int COL) {
+        Button button = buttons[ROW][COL];
+        int diamonds_number = 0;
+        for(int col = 0; col < NUM_COLS; col++){
+            if(diamonds_location[ROW][col] && (col != COL)){
+                diamonds_number++;
+            }
+        }
+
+        for(int row = 0; row < NUM_ROWS; row++){
+            if(diamonds_location[row][COL] && (row != ROW)){
+                diamonds_number++;
+            }
+        }
+
+        if(diamonds_location[ROW][COL]){
+            diamonds_number++;
+        }
+        return diamonds_number;
+    }
+
+    //show diamonds by locking button sizes and scale image to button then setBackground as image
+    private void showDiamond(int row, int col) {
         Toast.makeText(this,"button clicked: " + row + "," + col,Toast.LENGTH_SHORT).show();
         Button button = buttons[row][col];
 
@@ -118,8 +178,13 @@ public class PlayGame extends AppCompatActivity {
         Bitmap scaledBitmap = Bitmap.createScaledBitmap(originalBitmap,newWidth,newHeight,true);
         Resources resource = getResources();
         button.setBackground(new BitmapDrawable(resource,scaledBitmap));
+
+        //set diamond location to be false because diamond is found
+        diamonds_location[row][col] = false;
+
     }
 
+    //set Min and Max height for the button
     private void lockButtonSizes() {
         for(int row = 0; row < NUM_ROWS; row++){
             for(int col = 0; col < NUM_COLS; col++){
