@@ -1,22 +1,14 @@
 package cmpt276.assignment3.diamondseeker;
 
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import cmpt276.assignment3.diamondseeker.model.GameOptions;
 
@@ -77,9 +69,12 @@ public class MainMenu extends AppCompatActivity {
 
     private void refreshScreen() {
         //Refresh num panels display
-        TextView tvNumPanels = findViewById(R.id.board_number);
-        int numPanels = OptionsPage.getNumPanels(this);
-        tvNumPanels.setText(""+numPanels);
+        TextView tvBoardPanels = findViewById(R.id.board_number);
+        TextView tvMinesPanels = findViewById(R.id.mines_number);
+        int boardPanels = OptionsPage.getBoardNumPanels(this);
+        int minesPanels = OptionsPage.getMinesNumPanels(this);
+        tvBoardPanels.setText(""+boardPanels);
+        tvMinesPanels.setText(""+minesPanels);
     }
 
     @Override
