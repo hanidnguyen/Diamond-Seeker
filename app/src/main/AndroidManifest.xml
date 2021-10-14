@@ -14,8 +14,7 @@
             android:name=".PlayGame"
             android:exported="true"
             android:label="Game"
-            android:screenOrientation="landscape"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+            android:screenOrientation="landscape"/>
         <activity
             android:name=".OptionsPage"
             android:exported="true"

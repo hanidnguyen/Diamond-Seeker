@@ -11,4 +11,6 @@
     <color name="orange">#FF7346</color>
     <color name="yellow">#FFD145</color>
     <color name="blue">#2196F3</color>
+    <color name="light_orange">#D2FF6C3E</color>
+    <color name="light_purple">#DB9C65FF</color>
 </resources>

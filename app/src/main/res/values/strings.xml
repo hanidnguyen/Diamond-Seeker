@@ -1,15 +1,19 @@
 <resources>
     <string name="app_name">DiamondSeeker</string>
-    <string name="question_mark_image_ref"><a 
+    <string name="background_images_ref">All other background from <a
+        href="https://opencoursehub.cs.sfu.ca/bfraser/solutions/276/images/Images/">
+        https://opencoursehub.cs.sfu.ca/bfraser/</a></string>
+    <string name="question_mark_image_ref">Question mark background from <a
         href="https://www.pexels.com/photo/question-mark-on-chalk-board-356079/">
-        Tap to link</a></string>
-    <string name="onActivity_ref"><a
-        href="https://stackoverflow.com/questions/62671106/onactivityresult-method-is-deprecated-what-is-the-alternative">
-        Tap to link</a></string>
+        https://www.pexels.com</a></string>
+    <string name="diamond_icon_ref">Diamond icons made by <a
+        href="https://www.freepik.com">Freepik</a> from <a
+        href="https://www.flaticon.com/">http://www.flaticon.com</a></string>
     <string name="number_mines_subtitle">Select number mines</string>
     <string name="board_size_subtitle">Select Board Size</string>
     <string name="options_background_description">Options background</string>
     <string name="game_background_description">Game Background</string>
     <string name="main_menu_background_description">Main Menu Background</string>
+
 
 </resources>

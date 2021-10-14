@@ -36,7 +36,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="8dp"
+        android:background="@color/teal_200"
+        android:foregroundTint="@color/blue"
+        android:shadowColor="@color/white"
         android:text="@string/question_mark_image_ref"
+        android:textColor="@color/dark_grey"
         android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@+id/textView2"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
@@ -45,12 +49,13 @@
         android:id="@+id/ref2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
         android:layout_marginTop="8dp"
-        android:text="@string/onActivity_ref"
+        android:background="@color/teal_200"
+        android:text="@string/background_images_ref"
+        android:textColor="@color/dark_grey"
         android:textSize="16sp"
-        app:layout_constraintStart_toEndOf="@+id/textView3"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintStart_toStartOf="@+id/textView4"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <TextView
         android:id="@+id/textView"
@@ -86,7 +91,19 @@
         android:textColor="@color/white"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/ref2" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@color/teal_200"
+        android:text="@string/diamond_icon_ref"
+        android:textColor="@color/dark_grey"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/ref1"
+        app:layout_constraintTop_toBottomOf="@+id/ref1" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
