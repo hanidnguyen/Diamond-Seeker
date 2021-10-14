@@ -6,5 +6,8 @@
     <string name="onActivity_ref"><a
         href="https://stackoverflow.com/questions/62671106/onactivityresult-method-is-deprecated-what-is-the-alternative">
         Tap to link</a></string>
+    <string name="number_mines_subtitle">Select number mines</string>
+    <string name="board_size_subtitle">Select Board Size</string>
+    <string name="options_background_description">Options background</string>
 
 </resources>
