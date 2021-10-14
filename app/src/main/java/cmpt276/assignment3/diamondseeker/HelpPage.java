@@ -5,7 +5,11 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.method.LinkMovementMethod;
 import android.view.MenuItem;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 public class HelpPage extends AppCompatActivity {
 
@@ -17,6 +21,15 @@ public class HelpPage extends AppCompatActivity {
         ActionBar ab = getSupportActionBar();
         assert ab != null;
         ab.setDisplayHomeAsUpEnabled(true);
+
+        setupHyperlinks();
+    }
+
+    private void setupHyperlinks() {
+        TextView txt = findViewById(R.id.ref1);
+        txt.setMovementMethod(LinkMovementMethod.getInstance());
+        TextView txt2 = findViewById(R.id.ref2);
+        txt2.setMovementMethod(LinkMovementMethod.getInstance());
     }
 
     @Override
