@@ -1,15 +1,15 @@
 package cmpt276.assignment3.diamondseeker.model;
 
 public class GameOptions {
-    private int rows, columns, mines;
-    private int board_option, mines_option;
+    private int rows, columns, diamonds;
+    private int board_option, diamonds_option;
     private static GameOptions instance;
 
     public GameOptions() {
         board_option = 1;
-        mines_option = 1;
+        diamonds_option = 1;
         setBoard(board_option);
-        setMines(mines_option);
+        setDiamonds(diamonds_option);
     }
 
     //Applies the Singleton model class
@@ -42,23 +42,23 @@ public class GameOptions {
         }
     }
 
-    public void setMines(int optionNum){
+    public void setDiamonds(int optionNum){
         switch (optionNum){
             case 1:
-                mines = 6;
-                mines_option = 1;
+                diamonds = 6;
+                diamonds_option = 1;
                 break;
             case 2:
-                mines = 10;
-                mines_option = 2;
+                diamonds = 10;
+                diamonds_option = 2;
                 break;
             case 3:
-                mines = 15;
-                mines_option = 3;
+                diamonds = 15;
+                diamonds_option = 3;
                 break;
             case 4:
-                mines = 20;
-                mines_option = 4;
+                diamonds = 20;
+                diamonds_option = 4;
                 break;
             default:
                 break;
@@ -74,7 +74,7 @@ public class GameOptions {
         return columns;
     }
 
-    public int getMines() {
-        return mines;
+    public int getDiamonds() {
+        return diamonds;
     }
 }

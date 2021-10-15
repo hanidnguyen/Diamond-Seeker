@@ -70,7 +70,7 @@
         app:layout_constraintTop_toBottomOf="@+id/options_toolbar" />
 
     <RadioGroup
-        android:id="@+id/mines_size_radio"
+        android:id="@+id/diamonds_size_radio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"

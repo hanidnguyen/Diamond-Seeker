@@ -6,10 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Button;
-import android.widget.TextView;
 
 import cmpt276.assignment3.diamondseeker.model.GameOptions;
 
@@ -67,29 +65,22 @@ public class MainMenu extends AppCompatActivity {
     }
 
     private void refreshScreen() {
-        //Refresh num panels display
-        TextView tvBoardPanels = findViewById(R.id.board_number);
-        TextView tvMinesPanels = findViewById(R.id.mines_number);
+        //Refresh num panels
         int boardPanels = OptionsPage.getBoardNumPanels(this);
-        int minesPanels = OptionsPage.getMinesNumPanels(this);
-        tvBoardPanels.setText(""+boardPanels);
-        tvMinesPanels.setText(""+minesPanels);
+        int diamondsPanels = OptionsPage.getDiamondsNumPanels(this);
 
         options.setBoard(boardPanels);
-        options.setMines(minesPanels);
+        options.setDiamonds(diamondsPanels);
     }
 
     public static int getRowNum(){
-        Log.e("MainMenu.java","options rows: " + options.getRows());
         return options.getRows();
     }
     public static int getColNum(){
-        Log.e("MainMenu.java","options col: " + options.getColumns());
         return options.getColumns();
     }
-    public static int getMinesNum(){
-        Log.e("MainMenu.java","options mines: " + options.getMines());
-        return options.getMines();
+    public static int getDiamondsNum(){
+        return options.getDiamonds();
     }
 
     @Override

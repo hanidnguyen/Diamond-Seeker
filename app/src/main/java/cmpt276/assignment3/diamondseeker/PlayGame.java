@@ -1,8 +1,10 @@
 package cmpt276.assignment3.diamondseeker;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -23,7 +25,7 @@ public class PlayGame extends AppCompatActivity {
 
     private static int NUM_ROWS = MainMenu.getRowNum();
     private static int NUM_COLS = MainMenu.getColNum();
-    private static int total_diamonds = MainMenu.getMinesNum();
+    private static int total_diamonds = MainMenu.getDiamondsNum();
     private int total_scans = 0;
     private int diamonds_found = 0;
     Button[][] buttons = new Button[NUM_ROWS][NUM_COLS];
@@ -35,7 +37,7 @@ public class PlayGame extends AppCompatActivity {
         super.onResume();
         NUM_ROWS = MainMenu.getRowNum();
         NUM_COLS = MainMenu.getColNum();
-        total_diamonds = MainMenu.getMinesNum();
+        total_diamonds = MainMenu.getDiamondsNum();
         total_scans = 0;
         diamonds_found = 0;
         buttons = new Button[NUM_ROWS][NUM_COLS];
@@ -45,7 +47,7 @@ public class PlayGame extends AppCompatActivity {
         if (total_diamonds > (NUM_ROWS * NUM_COLS)) throw new AssertionError();
 
         setupBooleanArrays();
-        populateMines();
+        populateDiamonds();
         showStats();
         populateTableOfButtons();
     }
@@ -66,7 +68,7 @@ public class PlayGame extends AppCompatActivity {
         }
     }
 
-    private void populateMines() {
+    private void populateDiamonds() {
         Random random = new Random();
         int counter = total_diamonds;
         while(counter != 0){
@@ -197,20 +199,28 @@ public class PlayGame extends AppCompatActivity {
     private void refreshGrid() {
         TextView diamonds_count = findViewById(R.id.found_diamond);
         TextView scans = findViewById(R.id.number_scans);
-        diamonds_count.setText(""+diamonds_found);
-        scans.setText(""+total_scans);
-        for(int row = 0; row < NUM_ROWS; row++){
-            for(int col = 0; col < NUM_COLS; col++){
-                if(buttons_revealed[row][col]){
-                    int diamonds_number = displayNumberOfDiamonds(row,col);
+        diamonds_count.setText("" + diamonds_found);
+        scans.setText("" + total_scans);
+        for (int row = 0; row < NUM_ROWS; row++) {
+            for (int col = 0; col < NUM_COLS; col++) {
+                if (buttons_revealed[row][col]) {
+                    int diamonds_number = displayNumberOfDiamonds(row, col);
                     Button button = buttons[row][col];
-                    button.setText(""+diamonds_number);
+                    button.setText("" + diamonds_number);
                 }
             }
         }
 
-        if(diamonds_found == total_diamonds){
+        if (diamonds_found == total_diamonds) {
+            new AlertDialog.Builder(PlayGame.this)
+                    .setTitle("Congratulations!")
+                    .setMessage("Good work on finding all the diamonds!")
 
+                    // Specifying a listener allows you to take an action before dismissing the dialog.
+                    // The dialog is automatically dismissed when a dialog button is clicked.
+                    .setPositiveButton("OK", (dialog, which) -> finish())
+                    .setIcon(getDrawable(R.drawable.smiley_icon))
+                    .show();
         }
     }
 

@@ -14,7 +14,7 @@ import android.widget.RadioGroup;
 
 public class OptionsPage extends AppCompatActivity {
     private static final String BOARD_NUM_NAME = "Board Number";
-    private static final String MINES_NUM_NAME = "Mines Number";
+    private static final String DIAMONDS_NUM_NAME = "Diamonds Number";
     private static final String PREFS_NAME = "AppPrefs";
 
     public static Intent makeIntent(Context context){
@@ -31,7 +31,7 @@ public class OptionsPage extends AppCompatActivity {
         ab.setDisplayHomeAsUpEnabled(true);
 
         createBoardSizeRadioButtons();
-        createMineRadioButtons();
+        createDiamondsRadioButtons();
     }
 
 
@@ -63,20 +63,20 @@ public class OptionsPage extends AppCompatActivity {
 
     }
 
-    private void createMineRadioButtons() {
-        RadioGroup group = findViewById(R.id.mines_size_radio);
-        int[] numPanels = getResources().getIntArray(R.array.mines_number);
-        String[] mines_option_display = getResources().getStringArray(R.array.mines_options_display);
+    private void createDiamondsRadioButtons() {
+        RadioGroup group = findViewById(R.id.diamonds_size_radio);
+        int[] numPanels = getResources().getIntArray(R.array.diamonds_number);
+        String[] diamonds_option_display = getResources().getStringArray(R.array.diamonds_options_display);
 
         for(int i = 0; i < numPanels.length; i++){
             final int numPanel = numPanels[i];
 
             RadioButton button = new RadioButton(this);
-            button.setText(mines_option_display[i]);
+            button.setText(diamonds_option_display[i]);
 
-            button.setOnClickListener(view -> saveMinesOption(numPanel));
+            button.setOnClickListener(view -> saveDiamondsOption(numPanel));
             group.addView(button);
-            if(numPanel == getMinesNumPanels(this)){
+            if(numPanel == getDiamondsNumPanels(this)){
                 button.setChecked(true);
             }
         }
@@ -89,10 +89,10 @@ public class OptionsPage extends AppCompatActivity {
         editor.apply();
     }
 
-    private void saveMinesOption(int numPanel) {
+    private void saveDiamondsOption(int numPanel) {
         SharedPreferences prefs = this.getSharedPreferences(PREFS_NAME,MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
-        editor.putInt(MINES_NUM_NAME,numPanel);
+        editor.putInt(DIAMONDS_NUM_NAME,numPanel);
         editor.apply();
     }
 
@@ -104,12 +104,12 @@ public class OptionsPage extends AppCompatActivity {
         return prefs.getInt(BOARD_NUM_NAME,default_board_size);
     }
 
-    static public int getMinesNumPanels(Context context){
+    static public int getDiamondsNumPanels(Context context){
         SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME,MODE_PRIVATE);
 
-        int default_mines_size = context.getResources().getInteger(R.integer.default_mine);
+        int default_diamonds_size = context.getResources().getInteger(R.integer.default_diamond);
 
-        return prefs.getInt(MINES_NUM_NAME,default_mines_size);
+        return prefs.getInt(DIAMONDS_NUM_NAME,default_diamonds_size);
     }
 
     @Override
