@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <integer-array name="mines_number">
-        <item>6</item>
-        <item>10</item>
-        <item>15</item>
-        <item>20</item>
+    <integer-array name="diamonds_number">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
     </integer-array>
 
-    <integer name="default_mine">6</integer>
+    <integer name="default_diamond">1</integer>
 
-    <string-array name="mines_options_display">
+    <string-array name="diamonds_options_display">
         <item>6 mines</item>
         <item>10 mines</item>
         <item>15 mines</item>

@@ -18,7 +18,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/game_background"/>
+        app:srcCompat="@drawable/game_background" />
 
     <TableLayout
         android:id="@+id/tableForButtons"
@@ -32,8 +32,82 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="parent">
-    </TableLayout>
+        app:layout_constraintTop_toBottomOf="parent"></TableLayout>
+
+    <TextView
+        android:id="@+id/text_mines"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:text="Found "
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/tableForButtons"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/found_diamond"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/tableForButtons"
+        app:layout_constraintStart_toEndOf="@+id/text_mines"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/text_mines_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" of "
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/tableForButtons"
+        app:layout_constraintStart_toEndOf="@+id/found_diamond"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/total_diamonds"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="6"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/tableForButtons"
+        app:layout_constraintStart_toEndOf="@+id/text_mines_2"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/text_mines_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" diamonds"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/tableForButtons"
+        app:layout_constraintStart_toEndOf="@+id/total_diamonds"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/number_scans_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="14dp"
+        android:text="# Scans used: "
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/tableForButtons"
+        app:layout_constraintEnd_toStartOf="@+id/number_scans"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/number_scans"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="5dp"
+        android:text="0"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/tableForButtons"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
