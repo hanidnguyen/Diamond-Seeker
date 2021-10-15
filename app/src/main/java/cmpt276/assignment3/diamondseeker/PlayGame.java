@@ -16,28 +16,46 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.Toast;
 
+import java.util.Objects;
 import java.util.Random;
 
 public class PlayGame extends AppCompatActivity {
 
-    private static final int NUM_ROWS = 4;
-    private static final int NUM_COLS = 5;
-    private int diamonds = 5;
+    private static int NUM_ROWS = MainMenu.getRowNum();
+    private static int NUM_COLS = MainMenu.getColNum();
+    private static int diamonds = MainMenu.getMinesNum();
     Button[][] buttons = new Button[NUM_ROWS][NUM_COLS];
     Boolean[][] diamonds_location = new Boolean[NUM_ROWS][NUM_COLS];
     Boolean[][] buttons_revealed = new Boolean[NUM_ROWS][NUM_COLS];
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_play_game);
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.orange, getTheme())));
+    protected void onResume() {
+        super.onResume();
+        NUM_ROWS = MainMenu.getRowNum();
+        NUM_COLS = MainMenu.getColNum();
+        Log.e("PlayGame","getMinesNum(): " + MainMenu.getMinesNum());
+        diamonds = MainMenu.getMinesNum();
+        buttons = new Button[NUM_ROWS][NUM_COLS];
+        diamonds_location = new Boolean[NUM_ROWS][NUM_COLS];
+        buttons_revealed = new Boolean[NUM_ROWS][NUM_COLS];
 
         if (diamonds > (NUM_ROWS * NUM_COLS)) throw new AssertionError();
 
         setupBooleanArrays();
         populateMines();
         populateTableOfButtons();
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_play_game);
+        Objects.requireNonNull(getSupportActionBar()).setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.orange, getTheme())));
+
+        if (diamonds > (NUM_ROWS * NUM_COLS)) throw new AssertionError();
+
+        setupBooleanArrays();
+        populateMines();
     }
 
     private void setupBooleanArrays() {
@@ -51,20 +69,13 @@ public class PlayGame extends AppCompatActivity {
 
     private void populateMines() {
         Random random = new Random();
-
-        while(diamonds != 0){
+        int counter = diamonds;
+        while(counter != 0){
             int random_col = random.nextInt(NUM_COLS);
             int random_row = random.nextInt(NUM_ROWS);
             if(!diamonds_location[random_row][random_col]){
                 diamonds_location[random_row][random_col] = true;
-                diamonds--;
-            }
-        }
-
-        for(int row = 0; row < NUM_ROWS;row++){
-            for(int col = 0; col < NUM_COLS; col++){
-                Log.e("PlayGame.java","row: " + row + ", col: " + col +
-                        ", mines: " + diamonds_location[row][col] + "\n");
+                counter--;
             }
         }
 
@@ -73,6 +84,8 @@ public class PlayGame extends AppCompatActivity {
 
     private void populateTableOfButtons() {
         TableLayout table = findViewById(R.id.tableForButtons);
+
+        Log.e("PlayGame","NUM_ROWS: " + NUM_ROWS);
 
         for(int row = 0; row < NUM_ROWS;row++){
             TableRow tableRow = new TableRow(this);

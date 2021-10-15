@@ -66,11 +66,15 @@ public class GameOptions {
         }
     }
 
-    public int getBoard_option() {
-        return board_option;
+    public int getRows() {
+        return rows;
     }
 
-    public int getMines_option() {
-        return mines_option;
+    public int getColumns() {
+        return columns;
+    }
+
+    public int getMines() {
+        return mines;
     }
 }

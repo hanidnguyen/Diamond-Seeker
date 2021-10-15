@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
@@ -13,7 +14,7 @@ import android.widget.TextView;
 import cmpt276.assignment3.diamondseeker.model.GameOptions;
 
 public class MainMenu extends AppCompatActivity {
-    private GameOptions options = new GameOptions();
+    private static GameOptions options = new GameOptions();
 
     @Override
     protected void onResume() {
@@ -73,6 +74,22 @@ public class MainMenu extends AppCompatActivity {
         int minesPanels = OptionsPage.getMinesNumPanels(this);
         tvBoardPanels.setText(""+boardPanels);
         tvMinesPanels.setText(""+minesPanels);
+
+        options.setBoard(boardPanels);
+        options.setMines(minesPanels);
+    }
+
+    public static int getRowNum(){
+        Log.e("MainMenu.java","options rows: " + options.getRows());
+        return options.getRows();
+    }
+    public static int getColNum(){
+        Log.e("MainMenu.java","options col: " + options.getColumns());
+        return options.getColumns();
+    }
+    public static int getMinesNum(){
+        Log.e("MainMenu.java","options mines: " + options.getMines());
+        return options.getMines();
     }
 
     @Override
