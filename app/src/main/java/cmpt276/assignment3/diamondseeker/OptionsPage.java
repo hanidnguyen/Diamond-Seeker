@@ -12,14 +12,17 @@ import android.view.MenuItem;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+/*
+    Options Activity:
+    -   Sets up radio buttons for user to select grid and number of diamonds to play
+    -   Save options using SharedPreferences
+    -   Constructed public getters to access options chosen
+ */
+
 public class OptionsPage extends AppCompatActivity {
     private static final String BOARD_NUM_NAME = "Board Number";
     private static final String DIAMONDS_NUM_NAME = "Diamonds Number";
     private static final String PREFS_NAME = "AppPrefs";
-
-    public static Intent makeIntent(Context context){
-        return new Intent(context,OptionsPage.class);
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

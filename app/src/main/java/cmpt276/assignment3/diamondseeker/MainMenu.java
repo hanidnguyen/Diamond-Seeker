@@ -12,7 +12,10 @@ import android.widget.Button;
 import cmpt276.assignment3.diamondseeker.model.GameOptions;
 
 /*
-       Main Menu
+       Main Menu Activity:
+       -    sets up three buttons to start three activities: PlayGame, OptionsPage and HelpPage
+       -    gets options from the OptionsPage class through a public getter method
+       -    refresh the saved options on resume activity.
  */
 
 public class MainMenu extends AppCompatActivity {

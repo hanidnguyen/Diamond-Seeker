@@ -11,6 +11,11 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+/*
+    The help activity class
+    -   Displays all references for this Diamond Seeker game
+ */
+
 public class HelpPage extends AppCompatActivity {
 
     @Override

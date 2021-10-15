@@ -3,7 +3,13 @@
     <style name="AppTheme" parent = "Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/light_green</item>
         <item name="colorPrimaryDark">@color/dark_purple</item>
-        <item name="colorAccent">@color/light_yellow</item>
+        <item name="colorAccent">@color/dark_purple</item>
+    </style>
+
+    <style name="ToolBarStyle" parent="Theme.AppCompat">
+        <item name="android:textColorPrimary">@color/light_yellow</item>
+        <item name="android:textColorSecondary">@color/light_yellow</item>
+        <item name="actionMenuTextColor">@android:color/white</item>
     </style>
     
 </resources>

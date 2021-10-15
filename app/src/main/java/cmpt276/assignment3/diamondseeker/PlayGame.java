@@ -23,6 +23,18 @@ import android.widget.TextView;
 import java.util.Objects;
 import java.util.Random;
 
+/*
+    Play game activity:
+    -   Construct a grid of buttons according to given grid and number of diamonds
+    -   Upon a click:
+            -> a sound will play, blip.mp3 if not diamond, chime.mp3 if found a diamond
+            -> animation will play for buttons being scanned for diamonds
+            -> updates number of diamonds for all revealed buttons
+            -> updates the stats: diamonds found and number of scans
+            -> if the button is already pressed, none of the above feature will play
+    -   Once all diamonds found, a dialog will appear to congratulate user.
+ */
+
 public class PlayGame extends AppCompatActivity {
 
     private static int NUM_ROWS = MainMenu.getRowNum();
@@ -37,13 +49,14 @@ public class PlayGame extends AppCompatActivity {
     MediaPlayer player;
 
     @Override
-    protected void onResume() {
-        super.onResume();
+    protected void onRestart() {
+        super.onRestart();
         NUM_ROWS = MainMenu.getRowNum();
         NUM_COLS = MainMenu.getColNum();
         total_diamonds = MainMenu.getDiamondsNum();
         total_scans = 0;
         diamonds_found = 0;
+
         buttons = new Button[NUM_ROWS][NUM_COLS];
         diamonds_location = new Boolean[NUM_ROWS][NUM_COLS];
         buttons_revealed = new Boolean[NUM_ROWS][NUM_COLS];
@@ -60,7 +73,13 @@ public class PlayGame extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play_game);
-        Objects.requireNonNull(getSupportActionBar()).setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.orange, getTheme())));
+
+        if (total_diamonds > (NUM_ROWS * NUM_COLS)) throw new AssertionError();
+
+        setupBooleanArrays();
+        populateDiamonds();
+        showStats();
+        populateTableOfButtons();
     }
 
     private void setupBooleanArrays() {

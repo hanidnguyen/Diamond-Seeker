@@ -24,14 +24,11 @@
         android:id="@+id/main_menu_toolbar"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:background="@color/orange"
-        android:backgroundTint="@color/orange"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:background="@color/light_green"
+        android:theme="@style/ToolBarStyle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/play_game"
@@ -39,6 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:backgroundTint="@color/blue"
+        android:fontFamily="@font/francois_one"
         android:text="Play Game"
         android:textColor="@color/white"
         android:textColorHint="@color/black"
@@ -53,6 +51,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:backgroundTint="@color/blue"
+        android:fontFamily="@font/francois_one"
         android:text="Options"
         android:textColor="@color/white"
         android:textColorHint="@color/black"
@@ -68,6 +67,7 @@
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="24dp"
         android:backgroundTint="@color/blue"
+        android:fontFamily="@font/francois_one"
         android:text="Help"
         android:textColor="@color/white"
         android:textColorHint="@color/black"

@@ -12,6 +12,12 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+/*
+    Welcome Activity:
+    -   shows an animation upon created
+    -   includes a button to proceed to main menu.
+ */
+
 public class WelcomeActivity extends AppCompatActivity {
 
     Animation topAnim;

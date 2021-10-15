@@ -1,5 +1,11 @@
 package cmpt276.assignment3.diamondseeker.model;
 
+/*
+    Game Options logic
+    -   stores game's rows columns and number of diamonds.
+    -   also uses Singleton model, has its own static instance.
+ */
+
 public class GameOptions {
     private int rows, columns, diamonds;
     private int board_option, diamonds_option;
