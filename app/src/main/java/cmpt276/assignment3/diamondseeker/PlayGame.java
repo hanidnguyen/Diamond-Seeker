@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.DialogInterface;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -14,6 +13,8 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -121,7 +122,9 @@ public class PlayGame extends AppCompatActivity {
                 //Make text not clip on small buttons
                 button.setPadding(0,0,0,0);
                 button.setOnClickListener(view -> {
+
                     if(!buttons_revealed[FINAL_ROW][FINAL_COL]){
+                        scanAnimation(FINAL_ROW,FINAL_COL);
                         if(!diamonds_location[FINAL_ROW][FINAL_COL]){
                             player=MediaPlayer.create(PlayGame.this,R.raw.blip);
                         } else{
@@ -146,13 +149,29 @@ public class PlayGame extends AppCompatActivity {
         }
     }
 
+    private void scanAnimation(int ROW, int COL) {
+        Button button = buttons[ROW][COL];
+        final Animation button_anim = AnimationUtils.loadAnimation(this, R.anim.bounce);
+        button.startAnimation(button_anim);
+        for(int col = 0; col < NUM_COLS; col++){
+            if(col != COL){
+                buttons[ROW][col].startAnimation(button_anim);
+            }
+        }
+
+        for(int row = 0; row < NUM_ROWS; row++){
+            if(row != ROW){
+                buttons[row][COL].startAnimation(button_anim);
+            }
+        }
+    }
 
 
     //ROW and COL are given location of button to be scanned
     //Scan the corresponding row and column for diamonds, then
     //return number of diamonds.
     private int displayNumberOfDiamonds(int ROW, int COL) {
-        Button button = buttons[ROW][COL];
+
         int diamonds_number = 0;
         for(int col = 0; col < NUM_COLS; col++){
             if(diamonds_location[ROW][col] && (col != COL)){
@@ -225,9 +244,6 @@ public class PlayGame extends AppCompatActivity {
             new AlertDialog.Builder(PlayGame.this)
                     .setTitle("Congratulations!")
                     .setMessage("Good work on finding all the diamonds!")
-
-                    // Specifying a listener allows you to take an action before dismissing the dialog.
-                    // The dialog is automatically dismissed when a dialog button is clicked.
                     .setPositiveButton("OK", (dialog, which) -> finish())
                     .setIcon(getDrawable(R.drawable.smiley_icon))
                     .show();
