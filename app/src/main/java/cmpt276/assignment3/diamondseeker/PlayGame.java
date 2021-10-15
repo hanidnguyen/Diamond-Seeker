@@ -10,6 +10,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -31,6 +32,8 @@ public class PlayGame extends AppCompatActivity {
     Button[][] buttons = new Button[NUM_ROWS][NUM_COLS];
     Boolean[][] diamonds_location = new Boolean[NUM_ROWS][NUM_COLS];
     Boolean[][] buttons_revealed = new Boolean[NUM_ROWS][NUM_COLS];
+
+    MediaPlayer player;
 
     @Override
     protected void onResume() {
@@ -119,15 +122,22 @@ public class PlayGame extends AppCompatActivity {
                 button.setPadding(0,0,0,0);
                 button.setOnClickListener(view -> {
                     if(!buttons_revealed[FINAL_ROW][FINAL_COL]){
+                        if(!diamonds_location[FINAL_ROW][FINAL_COL]){
+                            player=MediaPlayer.create(PlayGame.this,R.raw.blip);
+                        } else{
+                            player=MediaPlayer.create(PlayGame.this,R.raw.chime);
+                        }
+                        player.start();
                         total_scans++;
                         buttons_revealed[FINAL_ROW][FINAL_COL] = true;
                     }
-
                     if(diamonds_location[FINAL_ROW][FINAL_COL]) {
+                        player=MediaPlayer.create(PlayGame.this,R.raw.chime);
+                        player.start();
                         diamonds_found++;
                         showDiamond(FINAL_ROW, FINAL_COL);
-
                     }
+
                     refreshGrid();
                 });
                 tableRow.addView(button);
