@@ -134,7 +134,7 @@ public class PlayGame extends AppCompatActivity {
     }
 
     //ROW and COL are given location of button to be scanned
-    //Scan the corresponsing row and column for diamonds, then
+    //Scan the corresponding row and column for diamonds, then
     //return number of diamonds.
     private int displayNumberOfDiamonds(int ROW, int COL) {
         Button button = buttons[ROW][COL];
