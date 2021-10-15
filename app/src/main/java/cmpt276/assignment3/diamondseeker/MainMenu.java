@@ -12,6 +12,10 @@ import android.widget.TextView;
 
 import cmpt276.assignment3.diamondseeker.model.GameOptions;
 
+/*
+       Main Menu
+ */
+
 public class MainMenu extends AppCompatActivity {
     private GameOptions options = new GameOptions();
 
