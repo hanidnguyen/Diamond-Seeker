@@ -73,13 +73,6 @@ public class PlayGame extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play_game);
-
-//        if (total_diamonds > (NUM_ROWS * NUM_COLS)) throw new AssertionError();
-//
-//        setupBooleanArrays();
-//        populateDiamonds();
-//        showStats();
-//        populateTableOfButtons();
     }
 
     private void setupBooleanArrays() {
