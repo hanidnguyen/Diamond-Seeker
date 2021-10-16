@@ -9,11 +9,9 @@ import android.text.method.LinkMovementMethod;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 /*
     The help activity class
-    -   Displays all references for this Diamond Seeker game
+    -   Displays all references for this Diamond Seeker game app
  */
 
 public class HelpPage extends AppCompatActivity {
@@ -31,10 +29,26 @@ public class HelpPage extends AppCompatActivity {
     }
 
     private void setupHyperlinks() {
-        TextView txt = findViewById(R.id.ref1);
-        txt.setMovementMethod(LinkMovementMethod.getInstance());
+        TextView author_ref = findViewById(R.id.author_ref);
+        TextView txt1 = findViewById(R.id.ref1);
         TextView txt2 = findViewById(R.id.ref2);
+        TextView txt3 = findViewById(R.id.ref3);
+        TextView txt4 = findViewById(R.id.ref4);
+        TextView txt5 = findViewById(R.id.ref5);
+        TextView txt6 = findViewById(R.id.ref6);
+        TextView txt7 = findViewById(R.id.ref7);
+        TextView txt8 = findViewById(R.id.ref8);
+
+
+        author_ref.setMovementMethod(LinkMovementMethod.getInstance());
+        txt1.setMovementMethod(LinkMovementMethod.getInstance());
         txt2.setMovementMethod(LinkMovementMethod.getInstance());
+        txt3.setMovementMethod(LinkMovementMethod.getInstance());
+        txt4.setMovementMethod(LinkMovementMethod.getInstance());
+        txt5.setMovementMethod(LinkMovementMethod.getInstance());
+        txt6.setMovementMethod(LinkMovementMethod.getInstance());
+        txt7.setMovementMethod(LinkMovementMethod.getInstance());
+        txt8.setMovementMethod(LinkMovementMethod.getInstance());
     }
 
     @Override

@@ -1,19 +1,78 @@
 <resources>
     <string name="app_name">DiamondSeeker</string>
+
+    <string name="author_ref">Written by Hani Nguyen, assignment by Dr.Brian Fraser <a
+        href="https://opencoursehub.cs.sfu.ca/bfraser/grav-cms/cmpt276/home">
+        https://opencoursehub.cs.sfu.ca/bfraser/grav-cms/cmpt276/home</a></string>
+
     <string name="background_images_ref">All other background from <a
         href="https://opencoursehub.cs.sfu.ca/bfraser/solutions/276/images/Images/">
         https://opencoursehub.cs.sfu.ca/bfraser/</a></string>
+
     <string name="question_mark_image_ref">Question mark background from <a
         href="https://www.pexels.com/photo/question-mark-on-chalk-board-356079/">
         https://www.pexels.com</a></string>
+
     <string name="diamond_icon_ref">Diamond icons made by <a
         href="https://www.freepik.com">Freepik</a> from <a
         href="https://www.flaticon.com/">http://www.flaticon.com</a></string>
-    <string name="number_mines_subtitle">Select number mines</string>
-    <string name="board_size_subtitle">Select Board Size</string>
+
+    <string name="audio_ref">Audio tutorial from <a
+        href="https://abhiandroid.com/androidstudio/add-audio-android-studio.html">
+        https://abhiandroid.com</a></string>
+
+    <string name="animation_ref">Buttons animation from <a
+        href="https://evgenii.com/blog/spring-button-animation-on-android/">
+        https://www.evgenii.com</a></string>
+
+    <string name="animation_ref_2">Splash screen animation from <a
+        href="https://www.youtube.com/watch?v=JLIFqqnSNmg">
+        Coding with Tea</a> on Youtube</string>
+
+    <string name="custom_button_ref_1">Custom button tutorial from <a
+        href="https://youtu.be/nlPtfncjOWA">
+        Stevdza-San</a> on Youtube</string>
+
+    <string name="custom_button_ref_2">Button shadow from <a
+        href="https://www.tutorialspoint.com/how-to-create-shadow-in-android-buttons">
+        https://www.tutorialspoint.com/</a></string>
+
+    <string name="exit_ref">Exit app code tutorial from <a
+        href="https://stackoverflow.com/questions/17719634/how-to-exit-an-android-app-pro
+        grammatically#:~:text=You%20can%20exit%20from%20the,ActionMain)%3B%20intent.">
+        https://stackoverflow.com/</a></string>
+
+    <string name="text_outline_ref">Text outline tutorial from <a
+        href="https://stackoverflow.com/questions/3182393/android-textview-outline-text">
+        https://stackoverflow.com/</a></string>
+
+    <string name="app_description">
+        Objective is to find all diamonds! Tap on a tile to scan for diamonds at its row/column.
+        Tap another time on a diamond you found for another scan (it will increase your total scans).
+        You can also choose grid size and number of mines in the options page. Have fun!
+    </string>
+
+    <string name="options_page_number_mines_subtitle">Select number mines</string>
+    <string name="options_page_board_size_subtitle">Select Board Size</string>
     <string name="options_background_description">Options background</string>
     <string name="game_background_description">Game Background</string>
     <string name="main_menu_background_description">Main Menu Background</string>
+    <string name="main_menu_play_game_button_tex">Play Game</string>
+    <string name="main_menu_options_button_text">Options</string>
+    <string name="main_menu_help_button_text">Help</string>
+    <string name="help_background">Help Background</string>
+    <string name="help_page_text_1">Diamond Seeker:</string>
+    <string name="help_page_text_2">References:</string>
+    <string name="play_game_text_1">Found </string>
+    <string name="play_game_text_found_diamond">0</string>
+    <string name="play_game_text_2"> of </string>
+    <string name="play_game_text_total_diamond">6</string>
+    <string name="play_game_text_3"> diamonds</string>
+    <string name="play_game_text_4"># Scans used: </string>
+    <string name="play_game_text_scan_number">0</string>
+    <string name="welcome_page_title">DIAMOND SEEKER</string>
+    <string name="welcome_page_author">by Hani Nguyen</string>
+    <string name="welcome_page_button">Main Menu</string>
 
 
 </resources>

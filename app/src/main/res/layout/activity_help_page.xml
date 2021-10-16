@@ -7,15 +7,17 @@
     tools:context=".HelpPage">
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/help_background"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
+        android:contentDescription="@string/help_background"
         android:scaleType="centerCrop"
-        android:contentDescription="Help Background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/help_background" />
 
     <androidx.appcompat.widget.Toolbar
@@ -29,79 +31,180 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/app_description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/light_yellow"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:text="@string/app_description"
+        android:textColor="@color/dark_grey"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/help_page_text_1"
+        app:layout_constraintTop_toBottomOf="@+id/author_ref" />
+
+    <TextView
+        android:id="@+id/help_page_text_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/light_yellow"
+        android:text="@string/help_page_text_2"
+        android:textColor="@color/dark_grey"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/app_description" />
+
+    <TextView
         android:id="@+id/ref1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:background="@color/teal_200"
+        android:background="@color/light_yellow"
         android:foregroundTint="@color/blue"
         android:shadowColor="@color/white"
         android:text="@string/question_mark_image_ref"
         android:textColor="@color/dark_grey"
-        android:textSize="16sp"
-        app:layout_constraintStart_toEndOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/help_page_text_2"
+        app:layout_constraintTop_toBottomOf="@+id/app_description" />
 
     <TextView
         android:id="@+id/ref2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:background="@color/teal_200"
-        android:text="@string/background_images_ref"
+        android:background="@color/light_yellow"
+        android:text="@string/diamond_icon_ref"
         android:textColor="@color/dark_grey"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/textView4"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/ref1"
+        app:layout_constraintTop_toBottomOf="@+id/ref1" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/ref3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:text="References:"
-        android:textColor="@color/white"
-        android:textSize="20sp"
+        android:background="@color/light_yellow"
+        android:text="@string/background_images_ref"
+        android:textColor="@color/dark_grey"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/ref2"
+        app:layout_constraintTop_toBottomOf="@+id/ref2" />
+
+    <TextView
+        android:id="@+id/ref4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/light_yellow"
+        android:text="@string/audio_ref"
+        android:textColor="@color/dark_grey"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/ref3"
+        app:layout_constraintTop_toBottomOf="@+id/ref3" />
+
+    <TextView
+        android:id="@+id/ref5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/light_yellow"
+        android:text="@string/animation_ref"
+        android:textColor="@color/dark_grey"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/ref4"
+        app:layout_constraintTop_toBottomOf="@+id/ref4" />
+
+    <TextView
+        android:id="@+id/ref6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/light_yellow"
+        android:text="@string/animation_ref_2"
+        android:textColor="@color/dark_grey"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/ref5"
+        app:layout_constraintTop_toBottomOf="@+id/ref5" />
+
+    <TextView
+        android:id="@+id/ref7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/light_yellow"
+        android:text="@string/custom_button_ref_1"
+        android:textColor="@color/dark_grey"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/ref6"
+        app:layout_constraintTop_toBottomOf="@+id/ref6" />
+
+    <TextView
+        android:id="@+id/ref8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/light_yellow"
+        android:text="@string/custom_button_ref_2"
+        android:textColor="@color/dark_grey"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/ref7"
+        app:layout_constraintTop_toBottomOf="@+id/ref7" />
+
+    <TextView
+        android:id="@+id/author_ref"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@color/light_yellow"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:text="@string/author_ref"
+        android:textColor="@color/dark_grey"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/help_toolbar" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/help_page_text_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Images"
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/imageView2"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
-        android:text="Code references"
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ref2" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:background="@color/teal_200"
-        android:text="@string/diamond_icon_ref"
+        android:background="@color/light_yellow"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:text="@string/help_page_text_1"
         android:textColor="@color/dark_grey"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/ref1"
-        app:layout_constraintTop_toBottomOf="@+id/ref1" />
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/author_ref" />
+
+
+
+    <TextView
+        android:id="@+id/ref9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/light_yellow"
+        android:text="@string/exit_ref"
+        android:textColor="@color/dark_grey"
+        app:layout_constraintStart_toStartOf="@+id/ref8"
+        app:layout_constraintTop_toBottomOf="@+id/ref8" />
+
+    <TextView
+        android:id="@+id/ref10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/light_yellow"
+        android:text="@string/text_outline_ref"
+        android:textColor="@color/dark_grey"
+        app:layout_constraintStart_toStartOf="@+id/ref9"
+        app:layout_constraintTop_toBottomOf="@+id/ref9" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

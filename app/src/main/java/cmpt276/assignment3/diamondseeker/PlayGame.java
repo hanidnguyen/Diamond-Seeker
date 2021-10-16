@@ -8,7 +8,6 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.ColorDrawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,7 +19,6 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-import java.util.Objects;
 import java.util.Random;
 
 /*
@@ -44,7 +42,7 @@ public class PlayGame extends AppCompatActivity {
     private int diamonds_found = 0;
     Button[][] buttons = new Button[NUM_ROWS][NUM_COLS];
     Boolean[][] diamonds_location = new Boolean[NUM_ROWS][NUM_COLS];
-    Boolean[][] buttons_revealed = new Boolean[NUM_ROWS][NUM_COLS];
+    Boolean[][] buttons_scanned = new Boolean[NUM_ROWS][NUM_COLS];
 
     MediaPlayer player;
 
@@ -59,7 +57,7 @@ public class PlayGame extends AppCompatActivity {
 
         buttons = new Button[NUM_ROWS][NUM_COLS];
         diamonds_location = new Boolean[NUM_ROWS][NUM_COLS];
-        buttons_revealed = new Boolean[NUM_ROWS][NUM_COLS];
+        buttons_scanned = new Boolean[NUM_ROWS][NUM_COLS];
 
         if (total_diamonds > (NUM_ROWS * NUM_COLS)) throw new AssertionError();
 
@@ -86,7 +84,7 @@ public class PlayGame extends AppCompatActivity {
         for(int row = 0; row < NUM_ROWS; row++){
             for(int col = 0; col < NUM_COLS; col++){
                 diamonds_location[row][col] = false;
-                buttons_revealed[row][col] = false;
+                buttons_scanned[row][col] = false;
             }
         }
     }
@@ -140,26 +138,27 @@ public class PlayGame extends AppCompatActivity {
 
                 //Make text not clip on small buttons
                 button.setPadding(0,0,0,0);
-                button.setOnClickListener(view -> {
 
-                    if(!buttons_revealed[FINAL_ROW][FINAL_COL]){
-                        scanAnimation(FINAL_ROW,FINAL_COL);
-                        if(!diamonds_location[FINAL_ROW][FINAL_COL]){
-                            player=MediaPlayer.create(PlayGame.this,R.raw.blip);
-                        } else{
-                            player=MediaPlayer.create(PlayGame.this,R.raw.chime);
-                        }
-                        player.start();
-                        total_scans++;
-                        buttons_revealed[FINAL_ROW][FINAL_COL] = true;
-                    }
-                    if(diamonds_location[FINAL_ROW][FINAL_COL]) {
+                //MediaPlayer tutorial from https://abhiandroid.com/androidstudio/add-audio-android-studio.html
+                button.setOnClickListener(view -> {
+                    if(diamonds_location[FINAL_ROW][FINAL_COL] && (!buttons_scanned[FINAL_ROW][FINAL_COL])) {
                         player=MediaPlayer.create(PlayGame.this,R.raw.chime);
                         player.start();
                         diamonds_found++;
                         showDiamond(FINAL_ROW, FINAL_COL);
+                    } else {
+                        if(!buttons_scanned[FINAL_ROW][FINAL_COL]){
+                            scanAnimation(FINAL_ROW,FINAL_COL);
+                            if(!diamonds_location[FINAL_ROW][FINAL_COL]){
+                                player=MediaPlayer.create(PlayGame.this,R.raw.blip);
+                            } else{
+                                player=MediaPlayer.create(PlayGame.this,R.raw.chime);
+                            }
+                            player.start();
+                            total_scans++;
+                            buttons_scanned[FINAL_ROW][FINAL_COL] = true;
+                        }
                     }
-
                     refreshGrid();
                 });
                 tableRow.addView(button);
@@ -168,6 +167,7 @@ public class PlayGame extends AppCompatActivity {
         }
     }
 
+    //Animation tutorial from https://evgenii.com/blog/spring-button-animation-on-android/
     private void scanAnimation(int ROW, int COL) {
         Button button = buttons[ROW][COL];
         final Animation button_anim = AnimationUtils.loadAnimation(this, R.anim.bounce);
@@ -216,6 +216,8 @@ public class PlayGame extends AppCompatActivity {
         //Lock Button sizes:
         lockButtonSizes();
 
+
+        //Diamond icons made by https://www.freepik.com from https://www.flaticon.com/
         //Scale image to buttons
         int newWidth = button.getWidth();
         int newHeight = button.getHeight();
@@ -251,7 +253,7 @@ public class PlayGame extends AppCompatActivity {
         scans.setText("" + total_scans);
         for (int row = 0; row < NUM_ROWS; row++) {
             for (int col = 0; col < NUM_COLS; col++) {
-                if (buttons_revealed[row][col]) {
+                if (buttons_scanned[row][col]) {
                     int diamonds_number = displayNumberOfDiamonds(row, col);
                     Button button = buttons[row][col];
                     button.setText("" + diamonds_number);

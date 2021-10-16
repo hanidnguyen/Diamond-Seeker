@@ -3,7 +3,6 @@ package cmpt276.assignment3.diamondseeker;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.drawable.Animatable;
 import android.os.Bundle;
 import android.view.WindowManager;
 import android.view.animation.Animation;
@@ -33,7 +32,7 @@ public class WelcomeActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_welcome);
 
-        //Animations
+        //Animations tutorial from Coding with Tea: https://www.youtube.com/watch?v=JLIFqqnSNmg
         topAnim = AnimationUtils.loadAnimation(this,R.anim.top_animation);
 
         image = findViewById(R.id.welcome_diamond_icon);

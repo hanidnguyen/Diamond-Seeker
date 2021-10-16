@@ -92,8 +92,23 @@ public class MainMenu extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        finish();
+        Intent homeIntent = new Intent(Intent.ACTION_MAIN);
+        homeIntent.addCategory( Intent.CATEGORY_HOME );
+        homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(homeIntent);
         return super.onOptionsItemSelected(item);
     }
 
+
+    //Exit app tutorial from
+    // https://stackoverflow.com/questions/17719634/
+    // how-to-exit-an-android-app-programmatically#:~:text=You%20can%20exit%20from%20the,ActionMain)%3B%20intent.
+    @Override
+    public void onBackPressed() {
+        Intent homeIntent = new Intent(Intent.ACTION_MAIN);
+        homeIntent.addCategory( Intent.CATEGORY_HOME );
+        homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(homeIntent);
+        super.onBackPressed();
+    }
 }
