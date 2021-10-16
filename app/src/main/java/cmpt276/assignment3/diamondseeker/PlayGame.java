@@ -47,9 +47,11 @@ public class PlayGame extends AppCompatActivity {
     MediaPlayer player;
 
     @Override
-    protected void onRestart() {
-        super.onRestart();
+    protected void onResume() {
+        super.onResume();
         NUM_ROWS = MainMenu.getRowNum();
+        Log.e("Playgame row call",""+MainMenu.getRowNum());
+        Log.e("Playgame col call",""+MainMenu.getColNum());
         NUM_COLS = MainMenu.getColNum();
         total_diamonds = MainMenu.getDiamondsNum();
         total_scans = 0;
@@ -72,12 +74,12 @@ public class PlayGame extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play_game);
 
-        if (total_diamonds > (NUM_ROWS * NUM_COLS)) throw new AssertionError();
-
-        setupBooleanArrays();
-        populateDiamonds();
-        showStats();
-        populateTableOfButtons();
+//        if (total_diamonds > (NUM_ROWS * NUM_COLS)) throw new AssertionError();
+//
+//        setupBooleanArrays();
+//        populateDiamonds();
+//        showStats();
+//        populateTableOfButtons();
     }
 
     private void setupBooleanArrays() {
@@ -115,8 +117,6 @@ public class PlayGame extends AppCompatActivity {
 
     private void populateTableOfButtons() {
         TableLayout table = findViewById(R.id.tableForButtons);
-
-        Log.e("PlayGame","NUM_ROWS: " + NUM_ROWS);
 
         for(int row = 0; row < NUM_ROWS;row++){
             TableRow tableRow = new TableRow(this);
