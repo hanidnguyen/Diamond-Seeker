@@ -38,6 +38,9 @@ public class HelpPage extends AppCompatActivity {
         TextView txt6 = findViewById(R.id.ref6);
         TextView txt7 = findViewById(R.id.ref7);
         TextView txt8 = findViewById(R.id.ref8);
+        TextView txt9 = findViewById(R.id.ref9);
+        TextView txt10 = findViewById(R.id.ref10);
+        TextView txt11 = findViewById(R.id.ref11);
 
 
         author_ref.setMovementMethod(LinkMovementMethod.getInstance());
@@ -49,6 +52,9 @@ public class HelpPage extends AppCompatActivity {
         txt6.setMovementMethod(LinkMovementMethod.getInstance());
         txt7.setMovementMethod(LinkMovementMethod.getInstance());
         txt8.setMovementMethod(LinkMovementMethod.getInstance());
+        txt9.setMovementMethod(LinkMovementMethod.getInstance());
+        txt10.setMovementMethod(LinkMovementMethod.getInstance());
+        txt11.setMovementMethod(LinkMovementMethod.getInstance());
     }
 
     @Override

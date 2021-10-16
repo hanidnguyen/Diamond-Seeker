@@ -46,11 +46,16 @@
         href="https://stackoverflow.com/questions/3182393/android-textview-outline-text">
         https://stackoverflow.com/</a></string>
 
+    <string name="audio_website">Audio from <a
+        href="https://www.wavsource.com/sfx/sfx.htm">
+        https://www.wavsource.com/sfx/sfx.htm</a></string>
+
     <string name="app_description">
         Objective is to find all diamonds! Tap on a tile to scan for diamonds at its row/column.
         Tap another time on a diamond you found for another scan (it will increase your total scans).
         You can also choose grid size and number of mines in the options page. Have fun!
     </string>
+
 
     <string name="options_page_number_mines_subtitle">Select number mines</string>
     <string name="options_page_board_size_subtitle">Select Board Size</string>
