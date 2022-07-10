@@ -1,3 +1,7 @@
+HOW TO PLAY:
+- Each time a grid is tapped, number of diamonds in that row col will appear on the grid as a hint to find the diamonds. 
+- Once a diamond is found, opened hints will be updated.
+
 Optional Features implemented:
 -   Welcome screen: animation
 -   Main menu: nice buttons and better than expected screen look
